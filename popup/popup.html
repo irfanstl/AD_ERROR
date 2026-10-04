@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AdShield</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>AdShield</h1>
+    <label class="switch" aria-label="Toggle blocking">
+      <input type="checkbox" id="toggle">
+      <span class="slider"></span>
+    </label>
+  </header>
+  <p id="status">Loading…</p>
+  <div class="stat">
+    <span id="count">0</span>
+    <small>popups &amp; redirects blocked</small>
+  </div>
+  <div class="row">
+    <span>Block adult &amp; gambling redirects</span>
+    <label class="switch" aria-label="Toggle adult and gambling redirect blocking">
+      <input type="checkbox" id="categories">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <p class="hint">Only blocks these sites when a popup or redirect sends you there. Typing the address or clicking a link in the same tab still works. Reload the page after switching.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

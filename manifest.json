@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "AdShield – Ad & Redirect Blocker",
+  "version": "1.0.0",
+  "description": "Blocks ads, popups and forced redirects, and keeps sites with anti-adblock detection working.",
+  "permissions": ["declarativeNetRequest", "storage", "tabs", "webNavigation"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "ads", "enabled": true, "path": "rules/ads.json" }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/antidetect.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/cosmetic.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["stubs/noop.js"], "matches": ["<all_urls>"] }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "AdShield"
+  }
+}
